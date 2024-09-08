@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
 import { FullPageLoader, Topbar } from "../components";
 
@@ -15,11 +16,25 @@ export const PrivateLayout = () => {
   return !token || isLoading ? (
     <FullPageLoader />
   ) : (
-    <div className="w-full flex flex-col px-10 md:px-2">
+    <div className="w-full flex flex-col px-4">
       <Topbar />
-      <section className="border border-gray-200 rounded-lg">
-        <Outlet />
-      </section>
+      <div className="flex justify-center items-center">
+        <section className="p-4 w-full md:w-1/2 border border-gray-200 rounded-lg flex flex-col">
+          <Outlet />
+        </section>
+      </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { PrivateLayout, PublicLayout } from "./layouts";
-import { useTheme } from "./hooks/useTheme";
+import { useTaxesPeriod, useTheme } from "./hooks";
 
 /* Public Pages */
 const LoginPage = lazy(() =>
@@ -23,10 +23,19 @@ const DashboardPage = lazy(() =>
   })
 );
 
+const MaintenancePage = lazy(() =>
+  import("./pages/MaintenancePage").then((module) => {
+    return { default: module.MaintenancePage };
+  })
+);
+
 export const TaxesRouter = () => {
   const { theme } = useTheme();
+  const { handleSetPeriod } = useTaxesPeriod();
 
   useEffect(() => {
+    handleSetPeriod();
+
     const root = window.document.documentElement;
 
     root.classList.remove("light", "dark");
@@ -75,6 +84,14 @@ export const TaxesRouter = () => {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <DashboardPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/app/maintenance"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <MaintenancePage />
               </Suspense>
             }
           />

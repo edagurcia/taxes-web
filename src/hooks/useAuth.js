@@ -13,6 +13,7 @@ import {
   appLogout,
   onLogin,
   onLogout,
+  onTaxesLogout,
 } from "../features";
 
 export const useAuth = () => {
@@ -170,7 +171,7 @@ export const useAuth = () => {
       dispatch(setIsLoading(true));
       await account.createEmailPasswordSession(user.email, user.password);
 
-      navigate("/app");
+      navigate("/app/logged");
     } catch (error) {
       dispatch(
         setError({
@@ -209,6 +210,7 @@ export const useAuth = () => {
       sessionStorage.removeItem("taxestoken");
       dispatch(onLogout());
       dispatch(appLogout());
+      dispatch(onTaxesLogout());
       await account.deleteSessions("current");
       navigate("/");
     } catch (error) {
