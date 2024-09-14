@@ -88,8 +88,6 @@ export const useTaxes = () => {
       commerce_name: item.commerce_name,
     };
 
-    console.log(data);
-
     dispatch(selectBusiness(data));
   };
 
@@ -97,11 +95,34 @@ export const useTaxes = () => {
     try {
       dispatch(taxesLoading(true));
       if (selectedBusiness) {
-        // TODO: update
+        await databases.updateDocument(
+          appwriteConfig.databaseId,
+          appwriteConfig.businessesCollectionId,
+          selectedBusiness.id,
+          {
+            commerce_name: formData,
+          }
+        );
         dispatch(selectBusiness(null));
       } else {
-        // TODO: save
+        await databases.createDocument(
+          appwriteConfig.databaseId,
+          appwriteConfig.businessesCollectionId,
+          ID.unique(),
+          {
+            owner: user?.connId,
+            commerce_name: formData,
+          }
+        );
       }
+
+      const business = await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.businessesCollectionId,
+        [Query.equal("owner", user?.connId)]
+      );
+
+      dispatch(onGetBusinesses(business));
 
       return { ok: true };
     } catch (error) {

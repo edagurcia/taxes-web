@@ -46,7 +46,6 @@ export const taxesInfoSlice = createSlice({
       state.error = payload;
     },
     selectBusiness: (state, { payload }) => {
-      console.log(payload);
       state.selectedBusiness = payload;
     },
   },
