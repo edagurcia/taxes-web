@@ -48,6 +48,9 @@ export const taxesInfoSlice = createSlice({
     selectBusiness: (state, { payload }) => {
       state.selectedBusiness = payload;
     },
+    selectRtn: (state, { payload }) => {
+      state.selectedRtn = payload;
+    },
   },
 });
 
@@ -60,4 +63,5 @@ export const {
   taxesLoading,
   taxesError,
   selectBusiness,
+  selectRtn,
 } = taxesInfoSlice.actions;

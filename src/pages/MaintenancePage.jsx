@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { useTaxes } from "../hooks";
+import { useBusiness, useRtn } from "../hooks";
 import { Businesses } from "../components";
 import { RTNS } from "../components/maitenance/RTNS";
 
 export const MaintenancePage = () => {
-  const { businesses, startGetBusiness, startGetRTNS } = useTaxes();
+  const { businesses, startGetBusiness } = useBusiness();
+  const { rtns, startGetRTNS } = useRtn();
 
   useEffect(() => {
-    if (businesses) return;
+    if (businesses && rtns) return;
 
     startGetBusiness();
     startGetRTNS();

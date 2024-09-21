@@ -1,13 +1,19 @@
 import { Header } from "./Header";
+import { FormRTNS } from "./FormRTNS";
+import { TableRTNS } from "./TableRTNS";
 
 export const RTNS = () => {
   return (
-    <div>
+    <>
       <Header
         id="rtns"
         title="RTN's registrados"
         description="Mantenimiento de RTN's"
       />
-    </div>
+
+      <FormRTNS />
+
+      <TableRTNS />
+    </>
   );
 };

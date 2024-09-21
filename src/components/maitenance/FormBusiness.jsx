@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import { useTaxes } from "../../hooks/useTaxes";
+import { useBusiness } from "../../hooks";
 import { businessValidations } from "../../schemas";
 import { FormErrorMessage } from "../shared/FormErrorMessage";
 import { Loader } from "../shared/Loader";
 
 export const FormBusiness = () => {
   const { isLoading, businesses, selectedBusiness, startSaveBusiness } =
-    useTaxes();
+    useBusiness();
 
   const formOptions = { resolver: yupResolver(businessValidations) };
 

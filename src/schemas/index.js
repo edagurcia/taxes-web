@@ -39,3 +39,8 @@ export const periodValidations = yup.object().shape({
 export const businessValidations = yup.object().shape({
   name: yup.string().required("Por favor provea un nombre de comercio"),
 });
+
+export const rtnsValidations = yup.object().shape({
+  name: yup.string().required("Por favor provea nombre del tributario"),
+  rtnNumber: yup.string().required("Por favor provea nombre del tributario"),
+});

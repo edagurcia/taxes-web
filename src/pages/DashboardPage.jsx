@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { useTaxes } from "../hooks/useTaxes";
+import { useBusiness, useRtn, useTaxes } from "../hooks";
 import { PeriodSelector } from "../components/dashboard/PeriodSelector";
 
 export const DashboardPage = () => {
-  const { taxes, startGetRTNS, startGetBusiness, startGetTaxes } = useTaxes();
+  const { taxes, startGetTaxes } = useTaxes();
+  const { startGetBusiness } = useBusiness();
+  const { startGetRTNS } = useRtn();
 
   useEffect(() => {
     if (taxes) return;

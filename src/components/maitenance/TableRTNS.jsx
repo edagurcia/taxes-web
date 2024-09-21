@@ -9,29 +9,27 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { FaRegEdit } from "react-icons/fa";
-import { useBusiness } from "@/hooks";
+import { useRtn } from "@/hooks";
 import { FilterInput } from "@/components/maitenance/FilterInput";
 import { Pagination } from "@/components/shared/Pagination";
 
-export const TableBusiness = () => {
+export const TableRTNS = () => {
   const [filterText, setFilterText] = useState("");
   const [curentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(5);
 
-  const { isLoading, businesses, selectedBusiness, handleSelectBusiness } =
-    useBusiness();
+  const { isLoading, rtns, selectedRtn, handleSelectRtn } = useRtn();
 
   const indexOfLastData = curentPage * dataPerPage;
   const indexOfFirstData = indexOfLastData - dataPerPage;
 
   const actualData =
-    businesses?.documents &&
-    businesses?.documents.slice(indexOfFirstData, indexOfLastData);
+    rtns?.documents && rtns?.documents.slice(indexOfFirstData, indexOfLastData);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const filteredData = businesses?.documents
-    ? businesses?.documents?.filter(
+  const filteredData = rtns?.documents
+    ? rtns?.documents?.filter(
         (item) =>
           JSON.stringify(item)
             .toLowerCase()
@@ -45,7 +43,7 @@ export const TableBusiness = () => {
         <FilterInput
           filterText={filterText}
           onFilter={(e) => setFilterText(e.target.value?.toLowerCase())}
-          placeholder="Buscar comercio..."
+          placeholder="Buscar RTN..."
           max={30}
         />
       );
@@ -62,38 +60,48 @@ export const TableBusiness = () => {
         <TableCaption>
           <Pagination
             dataPerPage={dataPerPage}
-            totalData={businesses?.total}
+            totalData={rtns?.total}
             paginate={paginate}
             isLoading={isLoading}
             curentPage={curentPage}
           />
-          Tiene {businesses?.total} comercios registrados
+          Tiene {rtns?.total} RTN's registrados
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Negocio</TableHead>
+            <TableHead>RTN</TableHead>
+            <TableHead>Nombre</TableHead>
             <TableHead>Editar</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {businesses?.documents.length > 0 ? (
+          {rtns?.documents.length > 0 ? (
             dataSet.map((item) => (
               <TableRow key={item.$id}>
                 <TableCell
                   className={`py-2 px-4 border-b ${
-                    selectedBusiness?.commerce_name === item.commerce_name
+                    selectedRtn?.RTN === item.RTN
                       ? "text-primary font-semibold"
                       : "text-gray-400 font-normal"
                   }`}
                 >
-                  {item.commerce_name}
+                  {item.RTN}
+                </TableCell>
+                <TableCell
+                  className={`py-2 px-4 border-b ${
+                    selectedRtn?.RTN_Name === item.RTN_Name
+                      ? "text-primary font-semibold"
+                      : "text-gray-400 font-normal"
+                  }`}
+                >
+                  {item.RTN_Name}
                 </TableCell>
                 <TableCell className="py-2 px-4 border-b">
                   <button
                     type="button"
                     disabled={isLoading}
                     className="mr-1"
-                    onClick={() => handleSelectBusiness(item)}
+                    onClick={() => handleSelectRtn(item)}
                   >
                     <FaRegEdit size={18} />
                   </button>
