@@ -11,15 +11,9 @@ import {
 export const useTaxes = () => {
   const dispatch = useDispatch();
 
-  const {
-    isLoading,
-    error,
-    taxes,
-    rtns,
-    selectedTax,
-    selectedRtn,
-    selectedPeriod,
-  } = useSelector((state) => state.taxesInfo);
+  const { isLoading, error, taxes, selectedTax, selectedPeriod } = useSelector(
+    (state) => state.taxesInfo
+  );
 
   const { user } = useSelector((state) => state.auth);
 
@@ -35,7 +29,7 @@ export const useTaxes = () => {
         appwriteConfig.taxescollectionId,
         [
           Query.equal("owner", user?.connId),
-          Query.equal("month_year", selectedPeriod?.strPeriod),
+          Query.equal("year", selectedPeriod?.year),
         ]
       );
 

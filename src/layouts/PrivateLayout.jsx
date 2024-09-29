@@ -19,7 +19,7 @@ export const PrivateLayout = () => {
     <div className="w-full flex flex-col px-4">
       <Topbar />
       <div className="flex justify-center items-center">
-        <section className="p-4 w-full md:w-1/2 border border-gray-200 rounded-lg flex flex-col">
+        <section className="p-4 w-full md:w-[800px] lg:w-[1200px] border border-gray-200 rounded-lg flex flex-col">
           <Outlet />
         </section>
       </div>

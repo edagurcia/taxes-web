@@ -13,12 +13,12 @@ export const useTaxesPeriod = () => {
       const getMonthPlusOne = getMonth + 1;
       const actualMonth = MONTHS.find((m) => m.id === getMonthPlusOne);
 
-      const strPeriod = `${actualMonth.month}-${actualYear}`;
+      const strMonth = `${actualMonth.month}`;
 
       const period = {
         month: actualMonth?.id,
-        year: actualYear,
-        strPeriod,
+        year: String(actualYear),
+        strMonth,
       };
 
       dispatch(setPeriod(period));
@@ -40,12 +40,12 @@ export const useTaxesPeriod = () => {
 
     const selectedMonth = MONTHS.find((m) => m.id === month);
 
-    const strPeriod = `${selectedMonth.month}-${year}`;
+    const strMonth = `${selectedMonth.month}`;
 
     const period = {
       month: month,
-      year: year,
-      strPeriod: strPeriod,
+      year: String(year),
+      strMonth,
     };
 
     dispatch(setPeriod(period));

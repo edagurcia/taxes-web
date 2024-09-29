@@ -5,6 +5,7 @@ export * from "./auth/Navigation";
 export * from "./auth/RegisterForm";
 
 export * from "./dashboard/PeriodSelector";
+export * from "./dashboard/StatsContainer";
 
 export * from "./maitenance/Businesses";
 
