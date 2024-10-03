@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useBusiness, useRtn, useTaxes } from "../hooks";
-import { PeriodSelector, StatsContainer } from "../components";
+import { PeriodSelector, StatsContainer, TaxesDetail } from "../components";
 
 export const DashboardPage = () => {
   const { taxes, startGetTaxes } = useTaxes();
@@ -20,8 +20,7 @@ export const DashboardPage = () => {
 
       <PeriodSelector />
       <StatsContainer />
-      <div>SEARCHINPUT</div>
-      <div>DETAIL</div>
+      <TaxesDetail />
     </>
   );
 };

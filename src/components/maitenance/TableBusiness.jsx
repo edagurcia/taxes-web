@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { FaRegEdit } from "react-icons/fa";
 import { useBusiness } from "@/hooks";
-import { FilterInput } from "@/components/maitenance/FilterInput";
+import { FilterInput } from "@/components/shared/FilterInput";
 import { Pagination } from "@/components/shared/Pagination";
 
 export const TableBusiness = () => {

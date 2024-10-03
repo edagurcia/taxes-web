@@ -6,6 +6,7 @@ import {
   setPeriod,
   taxesLoading,
   taxesError,
+  selectTax,
 } from "../features/taxesInfoSlice";
 
 export const useTaxes = () => {
@@ -47,6 +48,10 @@ export const useTaxes = () => {
     }
   };
 
+  const handleSelectTax = (tax) => {
+    dispatch(selectTax(tax));
+  };
+
   return {
     isLoading,
     error,
@@ -55,5 +60,6 @@ export const useTaxes = () => {
     selectedPeriod,
     handleSetInitialPeriod,
     startGetTaxes,
+    handleSelectTax,
   };
 };

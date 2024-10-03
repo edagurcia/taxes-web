@@ -1,4 +1,4 @@
-import { Header } from "./Header";
+import { Header } from "../shared/Header";
 import { FormRTNS } from "./FormRTNS";
 import { TableRTNS } from "./TableRTNS";
 

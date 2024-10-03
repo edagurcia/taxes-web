@@ -1,4 +1,4 @@
-import { Header } from "./Header";
+import { Header } from "../shared/Header";
 import { FormBusiness } from "./FormBusiness";
 import { TableBusiness } from "./TableBusiness";
 

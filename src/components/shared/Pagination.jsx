@@ -11,7 +11,7 @@ export const Pagination = ({
     pageNumber.push(i);
   }
 
-  const isDisable = totalData <= dataPerPage;
+  const isDisable = totalData <= dataPerPage || dataPerPage >= totalData;
 
   return (
     <div className="w-full md:w-1/2 flex gap-1">
@@ -21,7 +21,7 @@ export const Pagination = ({
           onClick={() => paginate(number)}
           className={`h-8 w-8 ${
             number === curentPage ? "bg-gray-700" : "bg-primary/50"
-          } text-white rounded-md hover:bg-primary duration-200`}
+          } text-white rounded-md hover:bg-primary duration-200 disabled:cursor-default disabled:hover:bg-slate-100`}
           disabled={isDisable || isLoading}
         >
           <span>{number}</span>
